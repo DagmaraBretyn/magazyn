@@ -49,7 +49,11 @@ class DbConnector {
 
             connection = DriverManager.getConnection(url, DB_USER, DB_PASSWORD);
         }
-        catch (SQLException | ClassNotFoundException e) {
+        catch (SQLException e) {
+            String errorMsg = "Problem z otwarciem po≥πczenia do bazy danych. Sprawdü czy baza danych jest w≥πczona.";
+            throw new DbException(errorMsg, e);
+        }
+        catch (ClassNotFoundException e) {
             String errorMsg = "Problem z otwarciem po≥πczenia do bazy danych. Sprawdü czy baza danych jest w≥πczona.";
             throw new DbException(errorMsg, e);
         }
