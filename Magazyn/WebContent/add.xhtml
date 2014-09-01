@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<ui:include src="/menu.xhtml"/>
+	
+			<h:panelGrid columns="2">
+      	 		Nazwa
+      	 		<h:inputText binding="#{add_nazwa}"/>
+      	 		
+      	 		Opis
+      	 		<h:inputText binding="#{add_opis}"/>
+      	 		
+      	 		Cena
+      	 		<h:inputText binding="#{add_cena}"/>
+      	 		
+      	 		Ilosc
+      	 		<h:inputText binding="#{add_ilosc}"/>
+      	 		
+      	 		Kategoria
+      	 		<h:selectOneMenu binding="#{add_kategoria}">
+				    <f:selectItems value="#{kategoria.kategorie}" var="_kategoria" itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}"/>
+				</h:selectOneMenu>    
+			</h:panelGrid>
+			
+			<h:commandButton value="Dodaj" action="#{towar.add(add_nazwa.value, add_opis.value, add_cena.value, add_ilosc.value, add_kategoira.value)}" />
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>

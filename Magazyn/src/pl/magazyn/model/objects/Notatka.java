@@ -21,8 +21,15 @@ public class Notatka {
         return nazwa;
     }
 
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
     public String getOpis() {
         return opis;
     }
 
+    public void setOpis(String opis) {
+        this.opis = opis;
+    }
 }

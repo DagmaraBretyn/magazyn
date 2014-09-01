@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputText value="Login i/lub haslo sa niepoprawne"
+				rendered="#{login.isLoginFailed}" style="color:red" />
+			<table>
+				<tr>
+					<td><h:outputText value="Wporowadz login: " /></td>
+					<td><h:inputText id="username" value="#{login.username}" /></td>
+				</tr>
+				<tr>
+					<td><h:outputText value="Wprowadz haslo: " /></td>
+					<td><h:inputSecret id="password" value="#{login.password}" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><h:commandButton value="Zaloguj"
+							action="#{login.validate}" /></td>
+					<td></td>
+				</tr>
+			</table>
+		</h:form>
+	</ui:define>
+</ui:composition>

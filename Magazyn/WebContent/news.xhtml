@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<ui:include src="/menu.xhtml"/>
+	
+		<div class="news">
+			<h:inputText binding="#{nazwa}" value="#{notatka.notatka.nazwa}" />
+			<br/>
+			<h:inputTextarea binding="#{opis}"  value="#{notatka.notatka.opis}"/>
+			<br/>
+			<h:commandButton value="Zapisz" action="#{notatka.save(nazwa.value, opis.value)}" />
+		</div>
+		
+		<div class="clock">
+		<script src="http://www.clocklink.com/embed.js"></script> <script type="text/javascript" language="JavaScript">
+		obj=new Object;obj.clockfile="0054-brown.swf";obj.TimeZone="CET"; 
+		obj.width=150;obj.height=150;obj.wmode="transparent";showClock(obj);</script>
+		</div>
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>
