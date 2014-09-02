@@ -103,7 +103,7 @@ public class DbHandler {
         towarHandler.removeTowar(towar);
     }
 
-    public List<Towar> getTowar() throws DbException {
+    public List<Towar> getTowary() throws DbException {
         return towarHandler.getTowar();
     }
 

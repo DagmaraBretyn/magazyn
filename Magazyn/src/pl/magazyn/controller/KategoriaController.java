@@ -1,27 +1,30 @@
 package pl.magazyn.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
+import pl.magazyn.exceptions.DbException;
+import pl.magazyn.model.DbHandler;
 import pl.magazyn.model.objects.Kategoria;
 
 @ManagedBean(name = "kategoria", eager = true)
 @RequestScoped
 public class KategoriaController {
 
-    private List<Kategoria> kategorie = new ArrayList<Kategoria>(Arrays.asList(new Kategoria(1, "k1"), new Kategoria(2,
-        "k2"), new Kategoria(3, "k3")));
+    private DbHandler db;
 
-    public List<Kategoria> getKategorie() {
-        return kategorie;
+    public KategoriaController() throws DbException {
+        db = new DbHandler();
     }
 
-    public void setKategorie(List<Kategoria> kategorie) {
-        this.kategorie = kategorie;
+    public List<Kategoria> getKategorie() throws DbException {
+        return db.getKategorie();
+    }
+
+    public String getKategoriaName(int id) throws DbException {
+        return db.getKategoria(id).getNazwa();
     }
 
 }

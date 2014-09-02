@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
+
+	<ui:define name="content">
+		<h:head>
+			<h:form>
+				<ui:include src="/menu.xhtml" />
+
+				<!-- .employeeTable{   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.employeeTableHeader{
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.employeeTableOddRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.employeeTableEvenRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
+} -->
+				<h:inputText value="#{towar.textFilter}"/>
+				<h:selectOneMenu value="#{towar.kategoriaFilter}">
+					<f:selectItem itemValue="0" itemLabel="Wszystkie kategorie" />
+					<f:selectItems value="#{kategoria.kategorie}" var="_kategoria"
+						itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}" />
+				</h:selectOneMenu>
+				<h:commandButton value="Filtruj" action="#{towar.filterTowar}"/>  
+				<h:dataTable value="#{towar.towary}" var="towar_obj">
+					<!--  styleClass="employeeTable" headerClass="employeeTableHeader"
+					rowClasses="employeeTableOddRow,employeeTableEvenRow"-->
+					<h:column>
+						<f:facet name="header"><h:commandButton value="Nazwa" action="#{towar.setNazwaComparator}" /></f:facet>    				
+				     	 <h:inputText value="#{towar_obj.nazwa}"
+							rendered="#{towar_obj.canEdit}" />
+			             <h:outputText value="#{towar_obj.nazwa}"
+			               	rendered="#{not towar_obj.canEdit}" />
+				   	</h:column>
+					<h:column>
+						<f:facet name="header"><h:commandButton value="Opis" action="#{towar.setOpisComparator}" /></f:facet>
+				      	<h:inputText value="#{towar_obj.opis}"
+							rendered="#{towar_obj.canEdit}" />
+			            <h:outputText value="#{towar_obj.opis}"
+			               	rendered="#{not towar_obj.canEdit}" />
+				    </h:column>
+					<h:column>
+						<f:facet name="header"><h:commandButton value="Cena" action="#{towar.setCenaComparator}" /></f:facet>
+				      	<h:inputText value="#{towar_obj.cena}"
+							rendered="#{towar_obj.canEdit}" converter="javax.faces.Double" />
+			            <h:outputText value="#{towar_obj.cena}"
+			               	rendered="#{not towar_obj.canEdit}" />
+				   	</h:column>
+					<h:column>
+						<f:facet name="header"><h:commandButton value="Ilosc" action="#{towar.setIloscComparator}" /></f:facet>
+				     	 <h:inputText value="#{towar_obj.ilosc}"
+							rendered="#{towar_obj.canEdit}" converter="javax.faces.Integer"/>
+			             <h:outputText value="#{towar_obj.ilosc}"
+			               	rendered="#{not towar_obj.canEdit}" />
+				   	</h:column>
+					<h:column>
+						<f:facet name="header"><h:commandButton value="Kategoria" action="#{towar.setKategoriaComparator}" /></f:facet>
+				     	 <h:selectOneMenu value="#{towar_obj.kategoria}" rendered="#{towar_obj.canEdit}" >
+							<f:selectItems value="#{kategoria.kategorie}" var="_kategoria"
+								itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}" />
+						</h:selectOneMenu>
+						<h:outputText value="#{kategoria.getKategoriaName(towar_obj.kategoria)}" rendered="#{not towar_obj.canEdit}" />
+				   	</h:column>
+					<h:column>
+						<f:facet name="header">Edit</f:facet>
+						<h:commandButton value="Edit" action="#{towar.enableEditTowar}" rendered="#{not towar_obj.canEdit}">        
+		                  <f:setPropertyActionListener target="#{towar.towar}" value="#{towar_obj}" />
+		               </h:commandButton>
+		               <h:commandButton value="Save" action="#{towar.editTowar}" rendered="#{towar_obj.canEdit}">        
+		                  <f:setPropertyActionListener target="#{towar.towar}" value="#{towar_obj}" />
+		               </h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandButton value="Delete" action="#{towar.deleteTowar}" onclick="return confirm('Operacja nieodwracalna.\nCzy napewno chcesz usunac ten element?')">
+							<f:setPropertyActionListener target="#{towar.towar}" value="#{towar_obj}" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</h:head>
+	</ui:define>
+
+</ui:composition>

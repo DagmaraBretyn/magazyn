@@ -4,31 +4,38 @@
 	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
 
 	<ui:define name="content">
-		<h:form>
-			<ui:include src="/menu.xhtml"/>
-	
-			<h:panelGrid columns="2">
-      	 		Nazwa
-      	 		<h:inputText binding="#{add_nazwa}"/>
-      	 		
-      	 		Opis
-      	 		<h:inputText binding="#{add_opis}"/>
-      	 		
-      	 		Cena
-      	 		<h:inputText binding="#{add_cena}"/>
-      	 		
-      	 		Ilosc
-      	 		<h:inputText binding="#{add_ilosc}"/>
-      	 		
-      	 		Kategoria
-      	 		<h:selectOneMenu binding="#{add_kategoria}">
-				    <f:selectItems value="#{kategoria.kategorie}" var="_kategoria" itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}"/>
-				</h:selectOneMenu>    
-			</h:panelGrid>
-			
-			<h:commandButton value="Dodaj" action="#{towar.add(add_nazwa.value, add_opis.value, add_cena.value, add_ilosc.value, add_kategoira.value)}" />
-			
-		</h:form>
+		<h:head>
+			<h:form>
+				<ui:include src="/menu.xhtml" />
+				
+				<h:outputText value="#{towar.towarAddedName}"
+						rendered="#{towar.towarAdded}" style="color:green" />
+
+				<h:panelGrid columns="2">
+				
+						Nazwa
+						<h:inputText value="#{towar.nazwa}" />
+						
+						Opis
+						<h:inputText value="#{towar.opis}" />
+
+						Cena
+						<h:inputText value="#{towar.cena}" converter="javax.faces.Double" />
+
+						Ilosc
+						<h:inputText value="#{towar.ilosc}" converter="javax.faces.Integer" />
+
+						Kategoria
+						<h:selectOneMenu value="#{towar.kategoria}">
+							<f:selectItems value="#{kategoria.kategorie}" var="_kategoria"
+								itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}" />
+						</h:selectOneMenu>
+				</h:panelGrid>
+
+
+				<h:commandButton value="Dodaj" action="#{towar.add}" />
+			</h:form>
+		</h:head>
 	</ui:define>
 
 </ui:composition>

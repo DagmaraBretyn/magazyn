@@ -1,10 +1,23 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
 
 	<div class="menu">
-		<h:commandButton value="Dodaj towar" action="#{menu.goToAddTowar}" />
-		<h:commandButton value="Przegladaj towar" action="#{menu.goToBrowseTowar}" />
+		<p:dock position="top">
+			<p:menuitem value="Rejestracja" icon="/resources/images/edit26.png"
+				url="add.html" />
+			<p:menuitem value="Usuń" icon="/resources/images/delete.png"
+				url="news.html" />
+			<p:menuitem value="Dodaj" icon="/resources/images/add.png"
+				url="add.html" />
+			<p:menuitem value="Rejestracja" icon="/resources/images/edit26.png"
+				url="add.html" />
+			<p:menuitem value="Rejestracja" icon="/resources/images/edit26.png"
+				url="add.html" />
+		</p:dock>
 	</div>
 
 </ui:composition>

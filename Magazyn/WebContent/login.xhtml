@@ -4,12 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
 
 	<ui:define name="content">
-		<h:form>
+	<div>
+		<img src="resources/images/logo.png" alt="logo"/>
+	</div>
+		<h:form id="log">
 			<h:outputText value="Login i/lub haslo sa niepoprawne"
 				rendered="#{login.isLoginFailed}" style="color:red" />
-			<table>
+			<table id="log1" >
 				<tr>
-					<td><h:outputText value="Wporowadz login: " /></td>
+					<td><h:outputText value="Wprowadz login: " /></td>
 					<td><h:inputText id="username" value="#{login.username}" /></td>
 				</tr>
 				<tr>
@@ -26,3 +29,4 @@
 		</h:form>
 	</ui:define>
 </ui:composition>
+
