@@ -5,13 +5,13 @@
 
 	<ui:define name="content">
 		<h:head>
-			<h:form>
+			<h:form >
 				<ui:include src="/menu.xhtml" />
 				
-				<h:outputText value="#{towar.towarAddedName}"
-						rendered="#{towar.towarAdded}" style="color:green" />
+				
+						
 
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" style="margin:90px auto;" >
 				
 						Nazwa
 						<h:inputText value="#{towar.nazwa}" />
@@ -30,11 +30,17 @@
 							<f:selectItems value="#{kategoria.kategorie}" var="_kategoria"
 								itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}" />
 						</h:selectOneMenu>
+				<h:commandButton value="Dodaj" action="#{towar.add}" />
+						
 				</h:panelGrid>
 
 
-				<h:commandButton value="Dodaj" action="#{towar.add}" />
 			</h:form>
+			<div style="color:green;margin:0 auto;text-align:center">
+			<h:outputText  value="#{towar.towarAddedName}"
+						rendered="#{towar.towarAdded}" />
+						</div>
+						
 		</h:head>
 	</ui:define>
 

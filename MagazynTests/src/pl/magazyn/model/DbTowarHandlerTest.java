@@ -131,7 +131,7 @@ public class DbTowarHandlerTest {
         when(query.getInt(6)).thenReturn(5);
 
         // when
-        List<Towar> result = testClass.getTowar();
+        List<Towar> result = testClass.getTowary();
 
         // then
         assertEquals(expected.getId(), result.get(0).getId());

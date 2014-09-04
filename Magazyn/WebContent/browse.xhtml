@@ -4,31 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
 
 	<ui:define name="content">
-		<h:head>
+		<h:head></h:head>
 			<h:form>
 				<ui:include src="/menu.xhtml" />
-
-				<!-- .employeeTable{   
-   border-collapse:collapse;
-   border:1px solid #000000;
-}
-
-.employeeTableHeader{
-   text-align:center;
-   background:none repeat scroll 0 0 #B5B5B5;
-   border-bottom:1px solid #000000;  
-   padding:2px;
-}
-
-.employeeTableOddRow{
-   text-align:center;
-   background:none repeat scroll 0 0 #FFFFFFF;	
-}
-
-.employeeTableEvenRow{
-   text-align:center;
-   background:none repeat scroll 0 0 #D3D3D3;
-} -->
 				<h:inputText value="#{towar.textFilter}"/>
 				<h:selectOneMenu value="#{towar.kategoriaFilter}">
 					<f:selectItem itemValue="0" itemLabel="Wszystkie kategorie" />
@@ -36,9 +14,10 @@
 						itemValue="#{_kategoria.id}" itemLabel="#{_kategoria.nazwa}" />
 				</h:selectOneMenu>
 				<h:commandButton value="Filtruj" action="#{towar.filterTowar}"/>  
-				<h:dataTable value="#{towar.towary}" var="towar_obj">
-					<!--  styleClass="employeeTable" headerClass="employeeTableHeader"
-					rowClasses="employeeTableOddRow,employeeTableEvenRow"-->
+				
+				<h:dataTable value="#{towar.towary}" var="towar_obj"
+					styleClass="towarTable" headerClass="towarTableHeader"
+					rowClasses="towarTableOddRow,towarTableEvenRow">
 					<h:column>
 						<f:facet name="header"><h:commandButton value="Nazwa" action="#{towar.setNazwaComparator}" /></f:facet>    				
 				     	 <h:inputText value="#{towar_obj.nazwa}"
@@ -90,9 +69,11 @@
 							<f:setPropertyActionListener target="#{towar.towar}" value="#{towar_obj}" />
 						</h:commandButton>
 					</h:column>
+					
 				</h:dataTable>
+				
 			</h:form>
-		</h:head>
+		
 	</ui:define>
 
 </ui:composition>

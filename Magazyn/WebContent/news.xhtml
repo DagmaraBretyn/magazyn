@@ -1,21 +1,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core" template="/template.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
 
 	<ui:define name="content">
+		<link rel="stylesheet" href="style.css" />
 		<h:form>
 			<ui:include src="/menu.xhtml" />
-		
-			<div id="news1">
-				<h:inputText value="#{notatka.nazwa}" />
+			<div id="news1" style="position: fixed; top: 100px; left: 40px;">
+				<h:inputText
+					style="font-weight: bold; background-image: url('/Magazyn/resources/images/notes.png');"
+					value="#{notatka.nazwa}" />
 				<br />
-				<h:inputTextarea cols="35" rows="15" value="#{notatka.opis}" />
+				<h:inputTextarea cols="90" rows="17" value="#{notatka.opis}" />
 				<br />
 				<h:commandButton value="Zapisz" action="#{notatka.save}" />
 			</div>
 
-			<div class="clock">
+
+			<!--  <div class="clock">
 				<script src="http://www.clocklink.com/embed.js"></script>
 				<script type="text/javascript" language="JavaScript">
 					obj = new Object;
@@ -26,9 +32,17 @@
 					obj.wmode = "transparent";
 					showClock(obj);
 				</script>
-			</div>
+			</div> -->
+
 
 		</h:form>
+		<div style="position: fixed; left: 40px;">
+			<p:clock />
+		</div>
+
+		<div style="position: fixed; right: 40px">
+			<p:calendar value="#{dateBean.date}" mode="inline" />
+		</div>
 	</ui:define>
 
 </ui:composition>
